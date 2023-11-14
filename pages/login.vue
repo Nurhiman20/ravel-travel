@@ -5,7 +5,7 @@
         <v-img src="@/assets/images/login-image.png" cover :max-height="'100vh'"></v-img>
       </v-col>
       <v-col cols="12" md="6">
-        <v-card class="ma-9 pa-6 d-flex flex-column">
+        <v-card class="ma-9 pa-6 d-flex flex-column rounded-xl">
           <div class="d-flex flex-row align-center mx-auto">
             <img class="logo" src="@/assets/images/logo.png" alt="">
             <div class="d-flex flex-column ml-1">

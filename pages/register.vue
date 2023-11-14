@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0 h-screen d-flex container">
     <img class="logo-bg" src="@/assets/images/large-logo.png" alt="logo">
-    <v-card class="ma-auto pa-6" width="531">
+    <v-card class="ma-auto pa-6 rounded-xl" width="531">
       <h2>Daftar</h2>
 
       <div class="text-subtitle-1 text-medium-emphasis mt-3">User ID</div>
