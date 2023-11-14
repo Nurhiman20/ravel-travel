@@ -15,24 +15,33 @@
         <div class="d-flex flex-column mt-6">
           <h2>Masuk</h2>
 
-          <div class="text-subtitle-1 text-medium-emphasis mt-3">User ID</div>
-          <v-text-field
-            density="compact"
-            variant="outlined"
-            data-cy="input-userId"
-          ></v-text-field>
+          <v-form v-model="form" @submit.prevent="onSubmit">
+            <div class="text-subtitle-1 text-medium-emphasis mt-3">User ID</div>
+            <v-text-field
+              v-model="userId"
+              density="compact"
+              variant="outlined"
+              data-cy="input-userId"
+              :rules="[required]"
+              @input="formatUserId"
+            ></v-text-field>
 
-          <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
-          <v-text-field
-            density="compact"
-            variant="outlined"
-            type="password"
-            data-cy="input-password"
-          ></v-text-field>
+            <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
+            <v-text-field
+              v-model="password"
+              density="compact"
+              variant="outlined"
+              type="password"
+              data-cy="input-password"
+              :rules="[required]"
+            ></v-text-field>
 
-          <v-checkbox label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
+            <v-checkbox v-model="rememberMe" label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
 
-          <v-btn block color="primary" size="large" data-cy="btn-login"> Log In </v-btn>
+            <v-btn type="submit" block color="primary" size="large" data-cy="btn-login">
+              Log In
+            </v-btn>
+          </v-form>
 
           <p class="mx-auto font-weight-medium mt-3">atau</p>
 
@@ -53,9 +62,29 @@
 
 <script setup>
 definePageMeta({
-  layout: 'guest'
-})
+  layout: "guest",
+});
 const router = useRouter();
+
+const form = ref(false);
+const required = (v) => {
+  return !!v || "Wajib diisi!";
+};
+const password = ref("");
+const rememberMe = ref(false);
+const userId = ref("");
+const formatUserId = () => {
+  // Remove spaces and replace with dots
+  userId.value = userId.value.replace(/\s+/g, ".");
+
+  // Allow only alphanumeric and dot
+  userId.value = userId.value.replace(/[^a-zA-Z0-9.]/g, "");
+
+  // Ensure dots are not added consecutively
+  userId.value = userId.value.replace(/\.+/g, ".");
+};
+
+const onSubmit = () => {};
 </script>
 
 <style lang="scss" scoped>
