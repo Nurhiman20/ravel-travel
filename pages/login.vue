@@ -41,7 +41,7 @@
 
             <p class="mx-auto font-weight-medium mt-3">atau</p>
 
-            <p class="mx-auto font-weight-medium mt-3">Belum punya akun? <span class="text-primary pointer" @click="router.push('/register')">Daftar</span></p>
+            <p class="mx-auto font-weight-medium mt-3">Belum punya akun? <span class="text-secondary pointer" @click="router.push('/register')">Daftar</span></p>
           </div>
         </v-card>
       </v-col>
