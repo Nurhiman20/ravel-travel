@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="pa-0 h-screen d-flex container">
-    <img class="logo-bg" src="@/assets/images/large-logo.png" alt="logo">
+    <img class="logo-bg" src="@/assets/images/large-logo.png" alt="logo" />
     <v-card class="ma-auto pa-6 rounded-xl" width="531">
       <h2>Daftar</h2>
 
@@ -9,6 +9,7 @@
         density="compact"
         variant="outlined"
         placeholder="Masukkan User ID"
+        data-cy="input-userId"
       ></v-text-field>
 
       <div class="text-subtitle-1 text-medium-emphasis mt-1">Nama</div>
@@ -16,6 +17,7 @@
         density="compact"
         variant="outlined"
         placeholder="Masukkan Nama"
+        data-cy="input-name"
       ></v-text-field>
 
       <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
@@ -25,6 +27,7 @@
         density="compact"
         placeholder="Masukkan password"
         variant="outlined"
+        data-cy="input-password"
         @click:append-inner="visible = !visible"
       ></v-text-field>
 
@@ -35,11 +38,12 @@
         density="compact"
         placeholder="Masukkan konfirmasi password"
         variant="outlined"
+        data-cy="input-confirmation_password"
         @click:append-inner="visibleConfirmation = !visibleConfirmation"
       ></v-text-field>
 
-      <v-btn block color="primary" size="large">Daftar</v-btn>
-    </v-card>    
+      <v-btn block color="primary" size="large" data-cy="btn-register">Daftar</v-btn>
+    </v-card>
   </v-container>
 </template>
 
@@ -59,6 +63,6 @@ const visibleConfirmation = ref(false);
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
 </style>
