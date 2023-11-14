@@ -1,59 +1,60 @@
 <template>
-  <v-container fluid class="pa-0 h-screen">
-    <v-row no-gutters>
-      <v-col cols="12" md="6">
-        <v-img src="@/assets/images/login-image.png" cover :max-height="'100vh'"></v-img>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-card class="ma-9 pa-6 d-flex flex-column rounded-xl">
-          <div class="d-flex flex-row align-center mx-auto">
-            <img class="logo" src="@/assets/images/logo.png" alt="" />
-            <div class="d-flex flex-column ml-1">
-              <p class="text-h2 font-weight-bold">Ravel</p>
-              <p class="text-caption">Travel Solution by Randy</p>
-            </div>
+  <v-row no-gutters>
+    <v-col cols="12" md="6">
+      <v-img src="@/assets/images/login-image.png" cover :max-height="'100vh'"></v-img>
+    </v-col>
+    <v-col cols="12" md="6">
+      <v-card class="ma-9 pa-6 d-flex flex-column rounded-xl">
+        <div class="d-flex flex-row align-center mx-auto">
+          <img class="logo" src="@/assets/images/logo.png" alt="" />
+          <div class="d-flex flex-column ml-1">
+            <p class="text-h2 font-weight-bold">Ravel</p>
+            <p class="text-caption">Travel Solution by Randy</p>
           </div>
-          <div class="d-flex flex-column mt-6">
-            <h2>Masuk</h2>
+        </div>
+        <div class="d-flex flex-column mt-6">
+          <h2>Masuk</h2>
 
-            <div class="text-subtitle-1 text-medium-emphasis mt-3">User ID</div>
-            <v-text-field
-              density="compact"
-              variant="outlined"
-              data-cy="input-userId"
-            ></v-text-field>
+          <div class="text-subtitle-1 text-medium-emphasis mt-3">User ID</div>
+          <v-text-field
+            density="compact"
+            variant="outlined"
+            data-cy="input-userId"
+          ></v-text-field>
 
-            <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
-            <v-text-field
-              density="compact"
-              variant="outlined"
-              type="password"
-              data-cy="input-password"
-            ></v-text-field>
+          <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
+          <v-text-field
+            density="compact"
+            variant="outlined"
+            type="password"
+            data-cy="input-password"
+          ></v-text-field>
 
-            <v-checkbox label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
+          <v-checkbox label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
 
-            <v-btn block color="primary" size="large" data-cy="btn-login"> Log In </v-btn>
+          <v-btn block color="primary" size="large" data-cy="btn-login"> Log In </v-btn>
 
-            <p class="mx-auto font-weight-medium mt-3">atau</p>
+          <p class="mx-auto font-weight-medium mt-3">atau</p>
 
-            <p class="mx-auto font-weight-medium mt-3">
-              Belum punya akun?
-              <span
-                class="text-secondary pointer"
-                data-cy="btn-register"
-                @click="router.push('/register')"
-                >Daftar</span
-              >
-            </p>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+          <p class="mx-auto font-weight-medium mt-3">
+            Belum punya akun?
+            <span
+              class="text-secondary pointer"
+              data-cy="btn-register"
+              @click="router.push('/register')"
+              >Daftar</span
+            >
+          </p>
+        </div>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>
+definePageMeta({
+  layout: 'guest'
+})
 const router = useRouter();
 </script>
 
