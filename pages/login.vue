@@ -7,7 +7,7 @@
       <v-col cols="12" md="6">
         <v-card class="ma-9 pa-6 d-flex flex-column rounded-xl">
           <div class="d-flex flex-row align-center mx-auto">
-            <img class="logo" src="@/assets/images/logo.png" alt="">
+            <img class="logo" src="@/assets/images/logo.png" alt="" />
             <div class="d-flex flex-column ml-1">
               <p class="text-h2 font-weight-bold">Ravel</p>
               <p class="text-caption">Travel Solution by Randy</p>
@@ -20,28 +20,32 @@
             <v-text-field
               density="compact"
               variant="outlined"
+              data-cy="input-userId"
             ></v-text-field>
-            
+
             <div class="text-subtitle-1 text-medium-emphasis mt-1">Password</div>
             <v-text-field
               density="compact"
               variant="outlined"
               type="password"
+              data-cy="input-password"
             ></v-text-field>
 
-            <v-checkbox label="Ingat saya"></v-checkbox>
+            <v-checkbox label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
 
-            <v-btn
-              block
-              color="primary"
-              size="large"
-            >
-              Log In
-            </v-btn>
+            <v-btn block color="primary" size="large" data-cy="btn-login"> Log In </v-btn>
 
             <p class="mx-auto font-weight-medium mt-3">atau</p>
 
-            <p class="mx-auto font-weight-medium mt-3">Belum punya akun? <span class="text-secondary pointer" @click="router.push('/register')">Daftar</span></p>
+            <p class="mx-auto font-weight-medium mt-3">
+              Belum punya akun?
+              <span
+                class="text-secondary pointer"
+                data-cy="btn-register"
+                @click="router.push('/register')"
+                >Daftar</span
+              >
+            </p>
           </div>
         </v-card>
       </v-col>
