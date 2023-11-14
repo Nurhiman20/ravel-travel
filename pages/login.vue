@@ -41,13 +41,17 @@
 
             <p class="mx-auto font-weight-medium mt-3">atau</p>
 
-            <p class="mx-auto font-weight-medium mt-3">Belum punya akun? <span class="text-primary pointer">Daftar</span></p>
+            <p class="mx-auto font-weight-medium mt-3">Belum punya akun? <span class="text-primary pointer" @click="router.push('/register')">Daftar</span></p>
           </div>
         </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<script setup>
+const router = useRouter();
+</script>
 
 <style lang="scss" scoped>
 .logo {
