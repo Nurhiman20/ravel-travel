@@ -7,10 +7,34 @@
         <p class="font-weight-bold text-white hero__title--sub">Travel Solution</p>
       </div>
     </div>
+
+    <v-row no-gutters class="px-12 py-9">
+      <v-col cols="12" md="4">
+        <v-card class="rounded-xl" width="440px" height="318px">
+          <v-img :src="data.data.image" width="100%" cover></v-img>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="8">
+        <div class="d-flex flex-column px-6">
+          <h2>Tujuan <span class="text-secondary">Baru</span>!</h2>
+          <p class="font-weight-bold mt-2">{{ data.data.name }}</p>
+          <p class="mt-3">{{ data.data.description }}</p>
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const token = useCookie("token");
+
+const { data } = await useFetch("https://bio-code.cyclic.app/api/v1/tours/new-tour", {
+  headers: {
+    authorization: `Bearer ${token.value}`,
+  },
+});
+console.log(data);
+</script>
 
 <style lang="scss" scoped>
 .hero {
@@ -18,7 +42,7 @@
   &__title {
     position: absolute;
     bottom: 19px;
-    left: 96px;
+    left: 48px;
     &--main {
       font-size: 40px;
     }
