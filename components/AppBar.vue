@@ -6,7 +6,7 @@
         data-cy="h-logo"
         @click="router.push('/')"
       >
-        <img class="logo--image" src="@/assets/images/logo.png" alt="logo" />
+        <img class="logo__image" src="@/assets/images/logo.png" alt="logo" />
         <div class="d-flex flex-column ml-3 logo--title">
           <p class="font-weight-black">Ravel</p>
           <p class="mt-n1 text-body-2">Travel Solution by Randy</p>
@@ -68,7 +68,7 @@ const logout = () => {
 
 <style lang="scss" scoped>
 .logo {
-  &--image {
+  &__image {
     width: 45px;
     height: 40px;
   }
