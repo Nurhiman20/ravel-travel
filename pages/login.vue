@@ -127,9 +127,7 @@ const storedUserId = useCookie('userId');
 
 const storeToCookie = (tokenVal) => {
   token.value = tokenVal;
-  if (rememberMe.value) {
-    storedUserId.value = userId.value;
-  }
+  storedUserId.value = userId.value;
 }
 
 onMounted(() => {
