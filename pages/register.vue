@@ -34,7 +34,7 @@
         data-cy="input-password"
         :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visible ? 'text' : 'password'"
-        :rules="[required]"
+        :rules="[required, matchConfirmation]"
         @click:append-inner="visible = !visible"
       ></v-text-field>
 
@@ -47,7 +47,7 @@
         data-cy="input-confirmation_password"
         :append-inner-icon="visibleConfirmation ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visibleConfirmation ? 'text' : 'password'"
-        :rules="[required]"
+        :rules="[required, matchConfirmation]"
         @click:append-inner="visibleConfirmation = !visibleConfirmation"
       ></v-text-field>
 
@@ -58,10 +58,14 @@
         color="primary"
         size="large"
         data-cy="btn-register"
+        :loading="loading"
         >Daftar</v-btn
       >
     </v-form>
   </v-card>
+  <v-snackbar v-model="showSnackbar" :timeout="3000" :color="isSuccess ? 'secondary' : 'error'" elevation="24">
+    {{ message }}
+  </v-snackbar>
 </template>
 
 <script setup>
@@ -75,7 +79,15 @@ const visibleConfirmation = ref(false);
 const required = (v) => {
   return !!v || "Wajib diisi!";
 };
+const matchConfirmation = (v) => {
+  if (password.value != passwordConfirmation.value) {
+    return 'Konfirmasi password tidak sesuai';
+  } else {
+    return !!v;
+  }
+}
 
+const form = ref(false);
 const userName = ref("");
 const password = ref("");
 const passwordConfirmation = ref("");
@@ -90,8 +102,40 @@ const formatUserId = () => {
   // Ensure dots are not added consecutively
   userId.value = userId.value.replace(/\.+/g, ".");
 };
-
-const onSubmit = () => {}
+const router = useRouter();
+const loading = ref(false);
+const showSnackbar = ref(false);
+const message = ref("");
+const isSuccess = ref(false);
+const onSubmit = async () => {
+  if (!form.value) return;
+  loading.value = true;
+  const { status } = await useFetch(
+    "https://bio-code.cyclic.app/api/v1/auam/register",
+    {
+      method: "post",
+      body: {
+        userId: userId.value,
+        name: userName.value,
+        password: password.value,
+      },
+    }
+  );
+  
+  if (status.value == 'error') {
+    message.value = "User ID telah digunakan";
+    isSuccess.value = false;
+    showSnackbar.value = true;
+  } else {
+    message.value = `Hai ${userName.value}, anda telah terdaftar`;
+    isSuccess.value = true;
+    showSnackbar.value = true;
+    setTimeout(() => {
+      router.push("/login");
+    }, 3000);
+  }
+  loading.value = false;
+};
 </script>
 
 <style lang="scss" scoped>

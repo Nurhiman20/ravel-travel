@@ -12,7 +12,7 @@ export default defineNuxtPlugin((app) => {
       'primary-darken-1': '#3700B3',
       secondary: '#4BFF72',
       'secondary-darken-1': '#018786',
-      error: '#B00020',
+      error: '#E5111E',
       info: '#2196F3',
       success: '#4CAF50',
       warning: '#FB8C00',
