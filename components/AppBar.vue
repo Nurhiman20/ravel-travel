@@ -14,7 +14,7 @@
       </div>
     </div>
     <v-spacer />
-    <div class="d-flex flex-row">
+    <div class="flex-row d-none d-sm-flex">
       <nuxt-link to="/" class="px-4" data-cy="h-nav-home">Home</nuxt-link>
       <nuxt-link to="/other-place" class="px-4" data-cy="h-nav-other-place"
         >Tempat Lain</nuxt-link
@@ -27,7 +27,7 @@
     <v-menu>
       <template v-slot:activator="{ props }">
         <div class="d-flex flex-row align-center pointer" data-cy="h-profile" v-bind="props">
-          <p class="mr-3">Halo, {{ user.name }}</p>
+          <p class="mr-3 d-none d-sm-flex">Halo, {{ user.name }}</p>
           <v-avatar color="blue">
             <span class="text-h6">{{ initialName }}</span>
           </v-avatar>

@@ -10,7 +10,7 @@
 
     <v-row no-gutters class="px-12 py-9">
       <v-col cols="12" md="4">
-        <v-card class="rounded-xl" width="440px" height="318px">
+        <v-card class="rounded-xl mb-3" width="100%" height="318px">
           <v-img :src="data.data.image" width="100%" cover></v-img>
         </v-card>
       </v-col>

@@ -1,6 +1,6 @@
 <template>
   <v-row no-gutters>
-    <v-col cols="12" md="6">
+    <v-col cols="12" md="6" class="d-none d-sm-flex">
       <v-img src="@/assets/images/login-image.png" cover :max-height="'100vh'"></v-img>
     </v-col>
     <v-col cols="12" md="6">
