@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-bar :user="user" @logout="logout" />
+    <app-bar v-if="user" :user="user" @logout="logout" />
     <main class="pt-16">
       <slot />
     </main>
@@ -10,8 +10,8 @@
 <script setup>
 const user = ref();
 
-const token = useCookie('token');
 const router = useRouter();
+const token = useCookie('token');
 if (!token.value) {
   router.push('/login')
 }
@@ -23,11 +23,13 @@ const { data: userData } = await useFetch('https://bio-code.cyclic.app/api/v1/us
   }
 });
 
-userData.value.data.forEach(element => {
-  if (element.userId == userId.value) {
-    user.value = element;
-  }
-});
+if (userData.value) {
+  userData.value.data.forEach(element => {
+    if (element.userId == userId.value) {
+      user.value = element;
+    }
+  });
+}
 
 const logout = () => {
   token.value = '';

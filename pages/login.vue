@@ -117,7 +117,7 @@ const onSubmit = async () => {
     storeToCookie(data.value.data.accessToken)
     setTimeout(() => {
       router.push("/");
-    }, 2000);
+    }, 1000);
   }
   loading.value = false;
 };
