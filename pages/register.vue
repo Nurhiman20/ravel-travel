@@ -136,6 +136,13 @@ const onSubmit = async () => {
   }
   loading.value = false;
 };
+
+const token = useCookie('token');
+onMounted(() => {
+  if (token.value) {
+    router.push('/')
+  }
+})
 </script>
 
 <style lang="scss" scoped>

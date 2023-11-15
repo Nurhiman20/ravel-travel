@@ -114,12 +114,32 @@ const onSubmit = async () => {
     message.value = `Selamat Datang, ${data.value.data.name}`;
     isSuccess.value = true;
     showSnackbar.value = true;
+    storeToCookie(data.value.data.accessToken)
     setTimeout(() => {
       router.push("/");
-    }, 3000);
+    }, 2000);
   }
   loading.value = false;
 };
+
+const token = useCookie('token');
+const storedUserId = useCookie('userId');
+
+const storeToCookie = (tokenVal) => {
+  token.value = tokenVal;
+  if (rememberMe.value) {
+    storedUserId.value = userId.value;
+  }
+}
+
+onMounted(() => {
+  if (token.value) {
+    router.push('/')
+  }
+  if (storedUserId.value) {
+    userId.value = storedUserId.value;
+  }
+})
 </script>
 
 <style lang="scss" scoped>
