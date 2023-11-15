@@ -38,7 +38,7 @@
 
             <v-checkbox v-model="rememberMe" label="Ingat saya" data-cy="input-remember_me"></v-checkbox>
 
-            <v-btn type="submit" block color="primary" size="large" data-cy="btn-login">
+            <v-btn type="submit" block color="primary" size="large" data-cy="btn-login" :loading="loading">
               Log In
             </v-btn>
           </v-form>
@@ -58,6 +58,10 @@
       </v-card>
     </v-col>
   </v-row>
+
+  <v-snackbar v-model="showSnackbar" :timeout="3000" :color="isSuccess ? 'secondary' : 'error'" elevation="24">
+    {{ message }}
+  </v-snackbar>
 </template>
 
 <script setup>
@@ -84,7 +88,38 @@ const formatUserId = () => {
   userId.value = userId.value.replace(/\.+/g, ".");
 };
 
-const onSubmit = () => {};
+const loading = ref(false);
+const showSnackbar = ref(false);
+const message = ref("");
+const isSuccess = ref(false);
+const onSubmit = async () => {
+  if (!form.value) return;
+  loading.value = true;
+  const { data, status } = await useFetch(
+    "https://bio-code.cyclic.app/api/v1/auam/login",
+    {
+      method: "post",
+      body: {
+        userId: userId.value,
+        password: password.value,
+      },
+    }
+  );
+  
+  if (status.value == 'error') {
+    message.value = "Id & Password Salah";
+    isSuccess.value = false;
+    showSnackbar.value = true;
+  } else {
+    message.value = `Selamat Datang, ${data.value.data.name}`;
+    isSuccess.value = true;
+    showSnackbar.value = true;
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
+  }
+  loading.value = false;
+};
 </script>
 
 <style lang="scss" scoped>
